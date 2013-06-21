@@ -1,0 +1,56 @@
+{
+    "slides":{
+        "null":{
+            "type":"null",
+            "time":7
+        },
+        "debut":{
+            "type":"image",
+            "file":"media/debut.jpg",
+            "time":7
+        },
+        "tinoco":{
+            "type":"image",
+            "file":"media/tinoco.jpg",
+            "time":7
+        }
+    },
+
+    "_comment":"Slideshows define a number of slides to play when it is triggered. ",
+    "slideshows":{
+        "main-slideshow":{
+            "slides":["null", "debut"]
+        },
+        "debut-slideshow": {
+            "slides":["debut"]
+        },
+        "tinoco-slideshow": {
+            "slides":["tinoco"]
+        }
+    },
+
+    "default_action":"default",
+
+    "_comment":"A action binds a action to a slideshow.",
+    "actions":{
+        "default":"main-slideshow",
+        "button_1": "debut-slideshow",
+        "button_11": "tinoco-slideshow"
+    },
+
+    "_comment":"Button mappings map input buttons to actions. THIS SHOULD NOT BE TOUCHED ONCE THE BUTTONS ARE CORRECTLY MAPPED! USE ACTIONS INSTEAD!",
+    "button-mappings":{
+        "13":"button_1",
+        "16":"button_2",
+        "15":"button_3",
+        "4":"button_4",
+        "17":"button_5",
+        "14":"button_6",
+        "10":"button_7",
+        "9":"button_8",
+        "6":"button_9",
+        "8":"button_10",
+        "7":"button_11",
+        "5":"button_12"
+    }
+}
