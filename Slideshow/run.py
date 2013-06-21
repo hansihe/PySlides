@@ -6,13 +6,6 @@ import pygame
 from serial_manager import SerialManager
 from slideshow_manager import SlideshowManager
 
-from slidetypes import image, movie, null
-slide_types = {
-    "image": image.ImageSlide,
-    "movie": movie.MovieSlide,
-    "null": null.NullSlide
-}
-
 screen_size = screen_width, screen_height = (1920, 1080)
 
 
@@ -23,8 +16,9 @@ def get_action_from_button(config, button_num):
         print "action not found"
         return None
 
-def process_input(slide_renderer, config, btn_num, btn_status):
-    if btn_status == 0:
+def process_input(slide_renderer, config, btn_data):
+    btn_num, btn_status = btn_data
+    if btn_status == "0":
         action = get_action_from_button(config, btn_num)
         if action:
             slide_renderer.load_action(action)
@@ -53,8 +47,9 @@ while not done:
                 done = True
 
     serialManager.pool()
-    btn_num, btn_status = serialManager.process()
-    process_input(slideRenderer, config, btn_num, btn_status)
+    data = serialManager.process()
+    if data:
+        process_input(slideRenderer, config, data)
 
     slideRenderer.tick()
 

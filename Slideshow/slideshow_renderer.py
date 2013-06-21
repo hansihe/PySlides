@@ -1,7 +1,7 @@
 __author__ = 'HansiHE'
 
 import datetime
-from run import slide_types
+from slidetypes import slide_types
 
 
 class SlideshowRenderer(object):  # Handles rendering a slideshow

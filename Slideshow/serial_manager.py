@@ -25,7 +25,7 @@ class SerialManager(object):
         Pools data from the serial port and adds it to the internal buffer.
         """
 
-        buffer += self.port.read(self.port.inWaiting())
+        self.buffer += self.port.read(self.port.inWaiting())
 
     def has_data(self):
         """
@@ -40,7 +40,7 @@ class SerialManager(object):
         """
 
         num_char = self.buffer.index(self.newline_separator)
-        result = self.buffer[num_char]
+        result = self.buffer[:num_char]
         self.buffer = self.buffer[num_char+len(self.newline_separator):]
         return result
 
@@ -57,6 +57,6 @@ class SerialManager(object):
             match = self.data_format.match(last_data)
 
             if not match:
-                raise ValueError("Invalid buffer data was supplied.")
+                raise ValueError("Invalid buffer data was supplied: %s" % repr(last_data))
 
             return match.groups()

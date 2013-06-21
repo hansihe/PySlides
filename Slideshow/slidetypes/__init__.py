@@ -20,3 +20,11 @@ class Slide(object):
 
     def flip_display(self):
         pygame.display.flip()
+
+
+import image, movie, null
+slide_types = {
+    "image": image.ImageSlide,
+    "movie": movie.MovieSlide,
+    "null": null.NullSlide
+}
