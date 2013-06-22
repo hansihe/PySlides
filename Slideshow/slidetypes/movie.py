@@ -24,7 +24,7 @@ class MovieSlide(Slide):
         print "destroying player"
         if self.player:
             #self.player.communicate(input="q")
-            self.player.send('q\n')
+            self.player.communicate(input='q\n')
             self.player.terminate()
             self.player.wait()
             self.player = None

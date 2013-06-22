@@ -57,7 +57,7 @@ while not done:
 
     slideRenderer.tick()
 
-    time.sleep(0.1)
+    time.sleep(0.05)
 
 slideRenderer.destroy()
 pygame.quit()
