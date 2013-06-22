@@ -12,7 +12,7 @@ class MovieSlide(Slide):
     def init(self):
         self.screen.fill((0, 0, 255))
         self.flip_display()
-        self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE)
+        self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE, shell=True)
         print "rendering %s" % str(self.config)
 
     def tick(self, time):
@@ -24,7 +24,7 @@ class MovieSlide(Slide):
         print "destroying player"
         if self.player:
             #self.player.communicate(input="q")
-            self.player.communicate(input='q\n')
+            self.player.communicate(input='q')
             self.player.terminate()
             self.player.wait()
             self.player = None
