@@ -3,6 +3,7 @@ __author__ = 'HansiHE'
 import json
 import time
 import pygame
+import lockfile
 from serial_manager import SerialManager
 from slideshow_manager import SlideshowManager
 
@@ -28,7 +29,10 @@ pygame.init()
 
 screen = pygame.display.set_mode(screen_size)
 
-config = json.load(open("config.json", "r"))
+lock = lockfile.FileLock('../config/config.json')
+with lock:
+    config = json.load(open(lock.path))
+#config = json.load(open("../config/config.json", "r"))
 
 slideRenderer = SlideshowManager(config, screen)
 slideRenderer.load_default_slideshow()
