@@ -2,6 +2,7 @@ __author__ = 'HansiHE'
 
 from . import Slide
 import subprocess
+import time
 
 
 class MovieSlide(Slide):
@@ -28,3 +29,4 @@ class MovieSlide(Slide):
             #self.player.terminate()
             self.player.wait()
             self.player = None
+            time.sleep(1)
