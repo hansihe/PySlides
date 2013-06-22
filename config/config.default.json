@@ -1,4 +1,6 @@
 {
+    "media_dir": "/home/bkb/PySlides/config/media/",
+
     "slides":{
         "null":{
             "type":"null",

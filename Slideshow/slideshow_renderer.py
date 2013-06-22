@@ -47,7 +47,7 @@ class SlideshowRenderer(object):  # Handles rendering a slideshow
     def load_slide_name(self, slide_name):
         self.destroy_current_slide()
         slide_conf = self.get_slide_config(slide_name)
-        self.slide = slide_types[slide_conf['type']](slide_conf, self.screen)
+        self.slide = slide_types[slide_conf['type']](self.config, slide_conf, self.screen)
         self.slide.init()
         self.update_time()
 

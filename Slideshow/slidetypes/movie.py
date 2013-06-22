@@ -6,13 +6,13 @@ import subprocess
 
 class MovieSlide(Slide):
 
-    def __init__(self, config, screen):
-        super(MovieSlide, self).__init__(config, screen)
+    def __init__(self, global_config, config, screen):
+        super(MovieSlide, self).__init__(global_config, config, screen)
 
     def init(self):
         self.screen.fill((0, 0, 255))
         self.flip_display()
-        self.player = subprocess.Popen(['omxplayer', self.config['file']], stdin=subprocess.PIPE)
+        self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE)
         print "rendering %s" % str(self.config)
 
     def tick(self, time):

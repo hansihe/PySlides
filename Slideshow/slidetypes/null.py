@@ -3,8 +3,8 @@ __author__ = 'HansiHE'
 from . import Slide
 
 class NullSlide(Slide):
-    def __init__(self, config, screen):
-        super(NullSlide, self).__init__(config, screen)
+    def __init__(self, global_config, config, screen):
+        super(NullSlide, self).__init__(global_config, config, screen)
 
     def init(self):
         self.screen.fill((255,255,255))

@@ -5,7 +5,8 @@ import pygame
 
 class Slide(object):
 
-    def __init__(self, config, screen):
+    def __init__(self, global_config, config, screen):
+        self.global_config = global_config
         self.config = config
         self.screen = screen
 
