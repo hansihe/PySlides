@@ -24,11 +24,14 @@ def process_input(slide_renderer, config, btn_data):
         if action:
             slide_renderer.load_action(action)
 
+def init_display():
+    global screen
+    screen = pygame.display.set_mode(screen_size)
 
 pygame.init()
 pygame.mouse.set_visible(False)
 
-screen = pygame.display.set_mode(screen_size)
+init_display()
 
 lock = lockfile.FileLock('../config/config.json')
 with lock:

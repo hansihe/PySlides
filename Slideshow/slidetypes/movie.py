@@ -3,6 +3,7 @@ __author__ = 'HansiHE'
 from . import Slide
 import subprocess
 import time
+from ..run import init_display
 
 
 class MovieSlide(Slide):
@@ -29,5 +30,7 @@ class MovieSlide(Slide):
             #self.player.terminate()
             self.player.wait()
             self.player = None
+            time.sleep(5)
+            init_display()
             #subprocess.call("sudo fbset -depth 8 && sudo fbset -depth 16", shell=True)
-            time.sleep(1)
+            time.sleep(5)
