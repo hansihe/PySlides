@@ -3,7 +3,6 @@ __author__ = 'HansiHE'
 from . import Slide
 import subprocess
 import time
-from Slideshow.run import init_display
 
 
 class MovieSlide(Slide):
