@@ -59,5 +59,7 @@ while not done:
 
     time.sleep(0.05)
 
+
+serialManager.close()
 slideRenderer.destroy()
 pygame.quit()

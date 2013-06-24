@@ -60,3 +60,7 @@ class SerialManager(object):
                 raise ValueError("Invalid buffer data was supplied: %s" % repr(last_data))
 
             return match.groups()
+
+    def close(self):
+
+        self.port.close()
