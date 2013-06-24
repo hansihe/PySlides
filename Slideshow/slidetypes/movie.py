@@ -29,4 +29,5 @@ class MovieSlide(Slide):
             #self.player.terminate()
             self.player.wait()
             self.player = None
+            subprocess.call("sudo fbset -depth 8 && sudo fbset -depth 16", shell=True)
             time.sleep(1)
