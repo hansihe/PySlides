@@ -28,7 +28,7 @@ def process_input(slide_renderer, config, btn_data):
 pygame.init()
 pygame.mouse.set_visible(False)
 
-screen = pygame.display.set_mode(screen_size)
+screen = pygame.display.set_mode(screen_size, pygame.HWSURFACE | pygame.DOUBLEBUF)
 
 lock = lockfile.FileLock('../config/config.json')
 with lock:
