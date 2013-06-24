@@ -22,6 +22,10 @@ class Slide(object):
     def flip_display(self):
         pygame.display.flip()
 
+    @classmethod
+    def load_cache(cls, global_config, config):
+        pass
+
 
 import image, movie, null
 slide_types = {

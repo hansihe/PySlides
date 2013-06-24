@@ -34,6 +34,12 @@ with lock:
     config = json.load(open(lock.path))
 #config = json.load(open("../config/config.json", "r"))
 
+from slidetypes import slide_types
+
+for slide_conf in config['slides']:
+    if slide_conf.get('cached', False):
+        slide_types[slide_conf['type']].load_cache(config, slide_conf)
+
 slideRenderer = SlideshowManager(config, screen)
 slideRenderer.load_default_slideshow()
 
