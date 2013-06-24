@@ -49,8 +49,8 @@ class SlideshowRenderer(object):  # Handles rendering a slideshow
         self.destroy_current_slide()
         slide_conf = self.get_slide_config(slide_name)
         self.slide = slide_types[slide_conf['type']](self.config, slide_conf, self.screen)
-        cProfile.runctx("self.slide.init()", globals(), locals(), sort="time")
-        #self.slide.init()
+        #cProfile.runctx("self.slide.init()", globals(), locals(), sort="time")
+        self.slide.init()
         self.update_time()
 
     def tick(self):
