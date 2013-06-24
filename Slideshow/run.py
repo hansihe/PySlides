@@ -36,7 +36,8 @@ with lock:
 
 from slidetypes import slide_types
 
-for slide_name, slide_conf in config['slides']:
+for slide_name in config['slides']:
+    slide_conf = config['slides'][slide_name]
     if slide_conf.get('cached', False):
         slide_types[slide_conf['type']].load_cache(config, slide_conf)
 
