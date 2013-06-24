@@ -29,8 +29,8 @@ class MovieSlide(Slide):
             self.player.communicate(input='q')
             #self.player.terminate()
             self.player.wait()
-            self.player = None
-            time.sleep(5)
-            init_display()
+            #self.player = None
+            #time.sleep(5)
+            #init_display()
             #subprocess.call("sudo fbset -depth 8 && sudo fbset -depth 16", shell=True)
             time.sleep(5)
