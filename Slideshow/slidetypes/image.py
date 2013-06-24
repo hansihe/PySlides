@@ -12,7 +12,7 @@ class ImageSlide(Slide):
     def init(self):
         self.screen.fill((255,255,255))
 
-        if self.config['_cached_image']:
+        if '_cached_image' in self.config:
             image_slide = self.config['_cached_image']
             print 'loading image from memory cache'
         else:
