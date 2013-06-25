@@ -3,6 +3,8 @@ __author__ = 'HansiHE'
 from . import Slide
 import subprocess
 import time
+from .. import run
+import pygame
 
 
 class MovieSlide(Slide):
@@ -13,8 +15,10 @@ class MovieSlide(Slide):
     def init(self):
         self.screen.fill((0, 0, 255))
         self.flip_display()
-        #self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE, shell=True)
-        self.player = subprocess.Popen('omxplayer ' + self.global_config['media_dir'] + self.config['file'], stdin=subprocess.PIPE, shell=True)
+        pygame.display.quit()
+        self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE)
+        #self.player = subprocess.Popen('omxplayer ' + self.global_config['media_dir'] + self.config['file'], stdin=subprocess.PIPE, shell=True)
+        print self.player.pid
         print "rendering %s" % str(self.config)
 
     def tick(self, time):
@@ -33,4 +37,6 @@ class MovieSlide(Slide):
             #time.sleep(5)
             #init_display()
             #subprocess.call("sudo fbset -depth 8 && sudo fbset -depth 16", shell=True)
+            time.sleep(5)
+            run.init_display()
             time.sleep(5)
