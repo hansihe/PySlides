@@ -15,10 +15,7 @@ class MovieSlide(Slide):
     def init(self):
         self.screen.fill((0, 0, 255))
         self.flip_display()
-        pygame.display.quit()
-        self.player = subprocess.Popen(['omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE)
-        #self.player = subprocess.Popen('omxplayer ' + self.global_config['media_dir'] + self.config['file'], stdin=subprocess.PIPE, shell=True)
-        print self.player.pid
+        self.player = subprocess.Popen(['./omxplayer', self.global_config['media_dir'] + self.config['file']], stdin=subprocess.PIPE)
         print "rendering %s" % str(self.config)
 
     def tick(self, time):
@@ -29,14 +26,5 @@ class MovieSlide(Slide):
     def destroy(self):
         print "destroying player"
         if self.player:
-            #self.player.communicate(input="q")
             self.player.communicate(input='q')
-            #self.player.terminate()
             self.player.wait()
-            #self.player = None
-            #time.sleep(5)
-            #init_display()
-            #subprocess.call("sudo fbset -depth 8 && sudo fbset -depth 16", shell=True)
-            time.sleep(5)
-            run.init_display()
-            time.sleep(5)

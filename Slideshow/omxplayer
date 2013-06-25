@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# OMXPlayer wrapper script. Fixes some common issues.
+#
+# Author: Sergio Conde <skgsergio@gmail.com>
+# License: GPLv2
+#
+
+OMXPLAYER_BIN="/usr/bin/omxplayer.bin"
+OMXPLAYER_LIBS="/opt/vc/lib:/usr/lib/omxplayer"
+
+LD_LIBRARY_PATH=$OMXPLAYER_LIBS:$LD_LIBRARY_PATH $OMXPLAYER_BIN "$@"; true
+
+if [ ! -z $NOREFRESH ] && [ "$NOREFRESH" == "1" ]; then
+    exit 0
+fi
+
+GREP=`which grep`
+if [ ! -z $GREP ]; then
+    echo "$@" | $GREP -E "\.(mp3|wav|wma|cda|ogg|ogm|aac|ac3|flac)( |$)" > /dev/null 2>&1
+    if [ "$?" == "0" ]; then
+        exit 0
+    fi
+fi
+
+#FBSET=`which fbset`
+#if [ ! -z $FBSET ]; then
+#    DEPTH2=`$FBSET | head -3 | tail -1 | cut -d " " -f 10`
+#
+#    if [ "$DEPTH2" == "8" ]; then
+#        DEPTH1=16
+#    elif [ "$DEPTH2" == "16" ] || [ "$DEPTH2" == "32" ]; then
+#        DEPTH1=8
+#    else
+#        DEPTH1=8
+#        DEPTH2=16
+#    fi
+#
+#    $FBSET -depth $DEPTH1 > /dev/null 2>&1
+#    $FBSET -depth $DEPTH2 > /dev/null 2>&1
+#fi
+#
+#XSET=`which xset`
+#XREFRESH=`which xrefresh`
+#if [ ! -z $XSET ] && [ ! -z $XREFRESH ]; then
+#    if [ -z $DISPLAY ]; then
+#        DISPLAY=":0"
+#    fi
+#
+#    $XSET -display $DISPLAY -q > /dev/null 2>&1
+#    if [ "$?" == "0" ]; then
+#        $XREFRESH -display $DISPLAY > /dev/null 2>&1
+#    fi
+#fi
