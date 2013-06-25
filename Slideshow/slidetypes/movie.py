@@ -17,6 +17,7 @@ class MovieSlide(Slide):
         text = font.render("Loading...", 1, (255, 255, 255))
         text_pos = text.get_rect()
         text_pos.centerx = self.screen.get_rect().centerx
+        text_pos.centery = self.screen.get_rect().centery
         self.screen.blit(text, text_pos)
 
         self.flip_display()
