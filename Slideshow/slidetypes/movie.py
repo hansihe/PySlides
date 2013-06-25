@@ -2,9 +2,6 @@ __author__ = 'HansiHE'
 
 from . import Slide
 import subprocess
-import time
-from .. import run
-import pygame
 
 
 class MovieSlide(Slide):
