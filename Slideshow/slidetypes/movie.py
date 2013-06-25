@@ -27,7 +27,7 @@ class MovieSlide(Slide):
     def tick(self, time):
         if self.player:
             if not self.player.returncode:
-                self.player.pool()
+                self.player.poll()
             if self.player.returncode:
                 self.player = None
                 return True
