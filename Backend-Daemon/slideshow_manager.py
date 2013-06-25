@@ -29,7 +29,7 @@ class SlideshowManager(object):
     def stop_slideshow(self):
         if not self.slideshow_process:
             raise NotRunningException()
-        self.slideshow_process.send_signal(signal.CTRL_C_EVENT)
+        self.slideshow_process.send_signal(signal.SIGINT)
 
     def restart_slideshow(self):
         try:
