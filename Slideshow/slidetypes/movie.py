@@ -25,8 +25,12 @@ class MovieSlide(Slide):
         print "rendering %s" % str(self.config)
 
     def tick(self, time):
-        if self.player and self.player.poll():
-            self.player = None
+        if self.player:
+            self.player.pool()
+            if self.player.returncode:
+                self.player = None
+                return True
+        else:
             return True
 
     def destroy(self):
@@ -34,3 +38,4 @@ class MovieSlide(Slide):
         if self.player:
             self.player.communicate(input='q')
             self.player.wait()
+            self.player = None

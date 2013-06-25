@@ -1,38 +1,16 @@
 __author__ = 'HansiHE'
 
-from twisted.internet import reactor, protocol
-from twisted.protocols.basic import LineOnlyReceiver
-
-from command import commands
+from twisted.web import server, resource
+from twisted.internet import reactor
 
 
-class CommandReceiver(LineOnlyReceiver):
-    """This is just about the simplest possible protocol"""
+class RootResource(resource.Resource):
+    isLeaf = False
 
-    delimiter = '\n'
+root = RootResource()
 
-    def lineReceived(self, line):
-        try:
-            split_index = line.index(' ')
-            command_name = line[:split_index]
-            command_data = line[split_index+1:]
-        except ValueError:
-            command_name = line
-            command_data = ""
+from slideshow_control import slideshow_control
+root.putChild('slideshow', slideshow_control)
 
-        try:
-            commands[command_name](command_data)
-        except KeyError:
-            return
-
-
-def main():
-    print 'wat'
-    factory = protocol.ServerFactory()
-    factory.protocol = CommandReceiver
-    reactor.listenTCP(7455, factory, interface='localhost')
-    reactor.run()
-
-
-if __name__ == '__main__':
-    main()
+reactor.listenTCP(8080, server.Site(root))
+reactor.run()
