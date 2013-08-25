@@ -1,4 +1,4 @@
-#/bin/python2
+#!/bin/python2
 __author__ = 'HansiHE'
 
 import json
